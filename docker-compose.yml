@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: snappy-api
+    env_file: .env.docker
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - redis
+    # optional: restart policy
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7
+    container_name: snappy-mongo
+    command: ["--replSet", "rs0"] 
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: snappy-redis
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
