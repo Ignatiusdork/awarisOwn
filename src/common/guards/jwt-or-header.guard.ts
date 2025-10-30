@@ -7,7 +7,7 @@ export class JwtOrHeaderGuard implements CanActivate {
   constructor(private readonly jwt: JwtService) {}
 
   canActivate(context: ExecutionContext): boolean {
-    // Make it work for GraphQL resolvers
+   
     const gql = GqlExecutionContext.create(context);
     const ctx = gql.getContext<{ req?: any }>();
     const req = ctx?.req ??  {}; 
@@ -20,10 +20,10 @@ export class JwtOrHeaderGuard implements CanActivate {
     if (auth.toLocaleLowerCase().startsWith('bearer ')) {
       try {
         const token = auth.slice(7).trim();
-        const payload = this.jwt.verify(token); // uses AuthModule secret
+        const payload = this.jwt.verify(token); 
         userId = payload?.sub ?? payload?.userId ?? payload?.id ?? userId ?? null;
       } catch {
-        // ignore invalid token — we still allow x-user-id fallback
+        // ignore invalid token 
       }
     }
 
@@ -31,7 +31,6 @@ export class JwtOrHeaderGuard implements CanActivate {
       throw new UnauthorizedException('Provide x-user-id header or a valid Bearer token');
     }
 
-    // Attach resolved user to request so @CurrentUser can read it
     req.user = { id: userId };
     return true;
   }

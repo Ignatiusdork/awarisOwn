@@ -23,12 +23,12 @@ import { AuthModule } from './auth/auth.module';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: true,             // code-first
+      autoSchemaFile: true,             
       sortSchema: true,
-      playground: true,                  // enable playground for dev
+      playground: true,                  
       context: ({ req }) => ({ req }),
       subscriptions: {
-        'graphql-ws': true,              // modern WS protocol
+        'graphql-ws': true,             
         'subscriptions-transport-ws': true,
       },
       

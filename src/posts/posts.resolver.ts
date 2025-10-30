@@ -57,7 +57,7 @@ export class PostsResolver {
     const updated = await this.reactions.toggle(postId, user.id, 'like');
 
     if (!updated) {
-      // either the post didn't exist or toggle failed to return an updated doc
+    
       throw new NotFoundException('Post not found');
     }
 
@@ -84,7 +84,7 @@ export class PostsResolver {
     const updated = await this.reactions.toggle(postId, user.id, 'dislike');
 
     if (!updated) {
-      // either the post didn't exist or toggle failed to return an updated doc
+      
       throw new NotFoundException('Post not found');
     }
 
