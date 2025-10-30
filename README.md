@@ -159,7 +159,7 @@ docker compose exec api node dist/seed.js                # prints USER_ID / POST
   Tab A should receive a payload on onPostUpdate with updated likeCount/dislikeCount instantly.
 
 ## Troubleshooting Quick Notes
- - ```bash
+  ```bash
     ECONNREFUSED 127.0.0.1:6379 / 127.0.0.1:27017
    ```
   API is trying to reach host services, but Redis/Mongo run inside Docker. Use compose service hosts via
