@@ -16,3 +16,8 @@ This README is your **single source of truth** to run, understand, and verify th
 From the project root:
 ```bash
 docker compose up -d --build
+
+First run only (initialize single-node replica set for MongoDB transactions):
+
+```bash
+docker compose exec mongo mongosh --eval 'rs.initiate({_id:"rs0",members:[{_id:0,host:"snappy-mongo:27017"}]})'
