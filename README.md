@@ -157,6 +157,11 @@ docker compose exec api node dist/seed.js                # prints USER_ID / POST
   - **Tab B (Mutation)**: in Headers, set either the JWT or x-user-id (from the seed output). Paste the Like mutation above, set postId to the same `POST_ID`, then Run.
 3. **Observe real-time update**
   Tab A should receive a payload on onPostUpdate with updated likeCount/dislikeCount instantly.
+4. **Tab C (View A Post)**
+   Tab C is for fetching a single Post by ID, including the current total likeCount, dislikeCount, and a flag indicating if the requesting user has already liked/disliked it.
+   ```bash
+   query($id: ID!) { post(id: $id) { id content likeCount dislikeCount } }
+   ```
 
 ## Troubleshooting Quick Notes
   ```bash
