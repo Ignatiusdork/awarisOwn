@@ -120,6 +120,16 @@ mutation Like($postId: ID!) {
     viewerReaction
   }
 }
+
+mutation Like($postId: ID!) {
+  dislikePost(postId: $postId) {
+    id
+    content
+    likeCount
+    dislikeCount
+    viewerReaction
+  }
+}
 ```
 ### Variables:
 ```bash
