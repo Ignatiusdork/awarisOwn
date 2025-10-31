@@ -152,7 +152,7 @@ docker compose up -d --build
 docker compose exec mongo mongosh --eval 'rs.status()'   # should show PRIMARY
 docker compose exec api node dist/seed.js                # prints USER_ID / POST_ID / JWT
 ```
-2. - **Open two tabs** at http://localhost:3000/graphql:
+2. - **Open three tabs** at http://localhost:3000/graphql:
   - **Tab A (Subscription)**: paste the Watch subscription above, set variables with the seeded `POST_ID`, then Run (it should say “listening”).
   - **Tab B (Mutation)**: in Headers, set either the JWT or x-user-id (from the seed output). Paste the Like mutation above, set postId to the same `POST_ID`, then Run.
 3. **Observe real-time update**
