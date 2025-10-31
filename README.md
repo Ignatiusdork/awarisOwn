@@ -121,7 +121,7 @@ mutation Like($postId: ID!) {
   }
 }
 
-mutation Like($postId: ID!) {
+mutation Dislike($postId: ID!) {
   dislikePost(postId: $postId) {
     id
     content
