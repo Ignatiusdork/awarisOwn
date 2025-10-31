@@ -158,13 +158,13 @@ docker compose exec api node dist/seed.js                # prints USER_ID / POST
   - **Mutation (like)**:
   ```bash
     mutation Like($postId: ID!) {
-      likePost(postId: $postId) { id likeCount dislikeCount viewerReaction }
+      likePost(postId: $postId) { id content likeCount dislikeCount viewerReaction }
     }
   ```
   - **Mutation (dislike)**:
   ```bash
   mutation Dislike($postId: ID!) {
-    dislikePost(postId: $postId) { id likeCount dislikeCount viewerReaction }
+    dislikePost(postId: $postId) { id content likeCount dislikeCount viewerReaction }
   }
   ```
 3. **Observe real-time update**
