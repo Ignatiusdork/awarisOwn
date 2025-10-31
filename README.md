@@ -155,6 +155,18 @@ docker compose exec api node dist/seed.js                # prints USER_ID / POST
 2. - **Open three tabs** at http://localhost:3000/graphql:
   - **Tab A (Subscription)**: paste the Watch subscription above, set variables with the seeded `POST_ID`, then Run (it should say “listening”).
   - **Tab B (Mutation)**: in Headers, set either the JWT or x-user-id (from the seed output). Paste the Like mutation above, set postId to the same `POST_ID`, then Run.
+  - **Mutation (like)**:
+  ```bash
+    mutation Like($postId: ID!) {
+      likePost(postId: $postId) { id likeCount dislikeCount viewerReaction }
+    }
+  ```
+  - **Mutation (dislike)**:
+  ```bash
+  mutation Dislike($postId: ID!) {
+    dislikePost(postId: $postId) { id likeCount dislikeCount viewerReaction }
+  }
+  ```
 3. **Observe real-time update**
   Tab A should receive a payload on onPostUpdate with updated likeCount/dislikeCount instantly.
 4. **Tab C (View A Post)**
